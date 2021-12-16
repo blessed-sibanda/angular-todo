@@ -28,13 +28,13 @@ export class AppComponent {
     if (this.showComplete) {
       return this.list.items.length;
     } else {
-      return this.list.items.length - this.items.length;
+      return this.items.length;
     }
   }
 
   get items(): readonly TodoItem[] {
     return this.list.items.filter((item) =>
-      this.showComplete ? true : item.complete
+      this.showComplete ? true : !item.complete
     );
   }
 
