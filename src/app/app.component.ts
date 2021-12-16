@@ -26,15 +26,15 @@ export class AppComponent {
 
   get itemCount(): number {
     if (this.showComplete) {
-      return this.list.items.length - this.items.length;
-    } else {
       return this.list.items.length;
+    } else {
+      return this.list.items.length - this.items.length;
     }
   }
 
   get items(): readonly TodoItem[] {
     return this.list.items.filter((item) =>
-      this.showComplete ? item.complete : true
+      this.showComplete ? true : item.complete
     );
   }
 
