@@ -13,6 +13,7 @@ export class AppComponent {
     new TodoItem('Watch a movies'),
     new TodoItem('Read a book'),
   ]);
+  displayedColumns: string[] = ['id', 'description', 'action'];
 
   get username(): string {
     return this.list.user;
@@ -20,5 +21,9 @@ export class AppComponent {
 
   get itemCount(): number {
     return this.list.items.filter((item) => !item.complete).length;
+  }
+
+  get items(): readonly TodoItem[] {
+    return this.list.items;
   }
 }
