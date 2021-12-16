@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatTable } from '@angular/material/table';
 import { TodoItem } from './todo-item';
 import { TodoList } from './todo-list';
 
@@ -13,6 +14,8 @@ export class AppComponent {
     new TodoItem('Watch a movies'),
     new TodoItem('Read a book'),
   ]);
+
+  @ViewChild(MatTable) table: MatTable<TodoItem> | undefined;
   displayedColumns: string[] = ['id', 'description', 'action'];
 
   get username(): string {
@@ -25,5 +28,16 @@ export class AppComponent {
 
   get items(): readonly TodoItem[] {
     return this.list.items;
+  }
+
+  addItem(taskInput: HTMLInputElement) {
+    let newTask = taskInput.value;
+    if (newTask != '') {
+      this.list.addItem(newTask);
+      taskInput.value = '';
+      this.table?.renderRows();
+    }
+
+    return false;
   }
 }

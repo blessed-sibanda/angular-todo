@@ -7,6 +7,25 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
+<div class="form-wrapper" fxLayout="row" fxLayoutAlign="center">
+  <form
+    fxLayout="row"
+    fxLayoutAlign="start baseline"
+    fxFlex.lg="40%"
+    fxFlex.md="50%"
+    fxFlex.sm="70%"
+    fxFlex.xs="100%"
+  >
+    <mat-form-field fxFlex="auto" appearance="standard">
+      <mat-label>Task</mat-label>
+      <input matInput placeholder="Enter task here" #todoText />
+    </mat-form-field>
+    <button (click)="addItem(todoText)" mat-stroked-button color="primary">
+      Add
+    </button>
+  </form>
+</div>
+
 <div class="table-wrapper" fxLayout="row" fxLayoutAlign="center">
   <table
     fxFlex.lg="40%"
