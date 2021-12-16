@@ -9,6 +9,8 @@ import { TodoList } from './todo-list';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  showComplete: boolean = false;
+
   private list = new TodoList('Blessed', [
     new TodoItem('Go for a run', true),
     new TodoItem('Watch a movies'),
@@ -23,11 +25,17 @@ export class AppComponent {
   }
 
   get itemCount(): number {
-    return this.list.items.filter((item) => !item.complete).length;
+    if (this.showComplete) {
+      return this.list.items.length - this.items.length;
+    } else {
+      return this.list.items.length;
+    }
   }
 
   get items(): readonly TodoItem[] {
-    return this.list.items;
+    return this.list.items.filter((item) =>
+      this.showComplete ? item.complete : true
+    );
   }
 
   addItem(taskInput: HTMLInputElement) {

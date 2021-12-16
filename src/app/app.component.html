@@ -3,7 +3,7 @@
     <span>{{ username }}'s To Do List</span>
   </mat-toolbar-row>
   <mat-toolbar-row class="toolbar-row">
-    <span>{{ itemCount }} Incomplete Items</span>
+    <span>{{ itemCount }} {{ showComplete ? "Incomplete" : "" }} Items</span>
   </mat-toolbar-row>
 </mat-toolbar>
 
@@ -57,4 +57,19 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+</div>
+
+<div class="option-wrapper" fxLayout="row" fxLayoutAlign="center">
+  <form
+    fxLayout="row"
+    fxLayoutAlign="center baseline"
+    fxFlex.lg="40%"
+    fxFlex.md="50%"
+    fxFlex.sm="70%"
+    fxFlex.xs="100%"
+  >
+    <mat-checkbox name="show-complete" [(ngModel)]="showComplete">
+      Show Completed Tasks
+    </mat-checkbox>
+  </form>
 </div>
